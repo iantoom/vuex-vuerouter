@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(Router)
+Vue.use(BootstrapVue)
 
 export default new Router({
   mode: 'history',
@@ -14,12 +18,22 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/cats',
+      name: 'cats',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/Cats.vue')
+    },
+    {
+      path: '/dogs',
+      name: 'dogs',
+      component: () => import('./views/Dogs.vue')
+    },
+    {
+      path: '/pets/:species/:id',
+      name: 'pet',
+      component: () => import('./views/Pet.vue')
     }
   ]
 })
